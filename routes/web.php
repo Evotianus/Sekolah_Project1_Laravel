@@ -39,16 +39,22 @@ Route::get('/', function () {
 });
 
 Route::get('/books', [BookController::class, 'index']);
+Route::get('/books/add', [BookController::class, 'create']);
+Route::get('/books/add/{id}', [BookController::class, 'show']);
+Route::get('/books/edit/{id}', [BookController::class, 'edit']);
+Route::post('/books', [BookController::class, 'store']);
+Route::delete('/books/{id}', [BookController::class, 'destroy']);
+Route::put('/books/{id}', [BookController::class, 'update']);
 
-Route::post('/books', function () {
-    return "Router ini nantinya akan digunakan untuk menciptakan data buku yang baru";
-});
-Route::get('/books/{id}', function ($id) {
-    return "Router ini nantinya akan digunakan untuk mengambil satu data buku dengan id=" . $id;
-});
-Route::put('/books/{id}', function ($id) {
-    return "Router ini nantinya akan digunakan untuk mengubah data buku dengan id=" . $id;
-});
-Route::delete('/books/{id}', function ($id) {
-    return "Router ini nantinya digunakan untuk menghapus data buku dengan id=" . $id;
-});
+// Route::post('/books', function () {
+//     return "Router ini nantinya akan digunakan untuk menciptakan data buku yang baru";
+// });
+// Route::get('/books/{id}', function ($id) {
+//     return "Router ini nantinya akan digunakan untuk mengambil satu data buku dengan id=" . $id;
+// });
+// Route::put('/books/{id}', function ($id) {
+//     return "Router ini nantinya akan digunakan untuk mengubah data buku dengan id=" . $id;
+// });
+// Route::delete('/books/{id}', function ($id) {
+//     return "Router ini nantinya digunakan untuk menghapus data buku dengan id=" . $id;
+// });

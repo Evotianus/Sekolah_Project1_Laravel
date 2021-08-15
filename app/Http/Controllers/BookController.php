@@ -43,7 +43,7 @@ class BookController extends Controller
         $book->year = $request->year;
         $book->save();
 
-        return $book;
+        return redirect('/books');
     }
 
     /**
@@ -63,9 +63,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $id)
     {
-        //
+        return view('books.edit', compact('id'));
     }
 
     /**
@@ -75,9 +75,17 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $id)
     {
-        //
+        Book::where('id', $id->id)
+            ->update([
+                'title' => $request->title,
+                'author' => $request->author,
+                'publication' => $request->publication,
+                'year' => $request->year
+            ]);
+        
+        return redirect('/books');
     }
 
     /**
@@ -86,8 +94,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $id)
     {
-        //
+        Book::destroy($id->id);
+        return redirect('/books');
     }
 }
