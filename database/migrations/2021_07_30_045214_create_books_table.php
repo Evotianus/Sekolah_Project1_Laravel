@@ -20,6 +20,7 @@ class CreateBooksTable extends Migration
             $table->string('publication');
             $table->unsignedInteger('year');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
